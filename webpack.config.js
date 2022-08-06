@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const InterpolateHtmlPlugin = require('interpolate-html-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
@@ -45,10 +46,13 @@ module.exports = {
             template: path.resolve(__dirname, './public/index.html'),
             favicon: path.resolve(__dirname, './public/favicon.ico')
         }),
+        new InterpolateHtmlPlugin({
+          PUBLIC_URL: 'public' 
+      }),
         new CleanWebpackPlugin(),
     ],
     devServer: {
-        static: path.join(__dirname, './public/'),
+        static: path.join(__dirname, './'),
         port: 3001,
         hot: 'only',
         compress: true,

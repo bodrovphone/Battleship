@@ -1,0 +1,23 @@
+# Editor
+.vscode
+.history 
+# Build
+/dist
+/build
+# Local config
+.npmrc
+.DS_Store
+.idea/
+# Logs
+*.log
+*.heapsnapshot
+# Dependencies
+node_modules
+# Tests
+coverage
+test-report.json
+*.snap
+
+types/open-api
+package-lock.json
+__snapshots__

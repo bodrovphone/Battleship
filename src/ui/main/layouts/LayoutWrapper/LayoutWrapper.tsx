@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const LayoutWrapperStyled = styled.div`
+const LayoutWrapper_Styled = styled.div`
     display: flex;
     margin: 0 auto;
     padding: 0;
@@ -16,5 +16,5 @@ type Props = {
 };
 
 export const LayoutWrapper: React.FC<Props> = ({ children }) => {
-    return <LayoutWrapperStyled>{children}</LayoutWrapperStyled>;
+    return <LayoutWrapper_Styled>{children}</LayoutWrapper_Styled>;
 };

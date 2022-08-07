@@ -1,24 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
+import times from 'lodash/times';
 
-import { Cell } from '../components/Cell';
-import { Pane } from '../components/Pane';
+import { CloneComponent } from '@/business/utils/cloneComponent';
 
-const Grid_Styled = styled.div`
-    margin: auto;
+import { GridColumns } from '../components/GridColumns';
+import { GridRow } from '../components/GridRow';
+import { ALPHABET } from '../const';
+
+const Grid_Styled = styled.div<Props>`
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(${(props) => ++props.size}, auto);
+    row-gap: 10px;
+    margin: auto;
+    width: 70%;
 `;
 
-export const Grid: React.FC = () => {
+type Props = {
+    size: number;
+};
+
+const makeObj = (index: number) => ({ order: index, index: index });
+
+export const Grid: React.FC<Props> = ({ size = 10 }) => {
     return (
-        <>
-            <Pane horizontal titles={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']} count={10} />
-            <Grid_Styled>
-                {new Array(100).fill(0).map((_zero, index) => (
-                    <Cell key={index} />
-                ))}
-            </Grid_Styled>
-        </>
+        <Grid_Styled size={size}>
+            <GridColumns length={size} />
+            <CloneComponent times={size} indexedProps={times(size, makeObj)}>
+                <GridRow length={size} order={size} sideAnnotations={ALPHABET} />
+            </CloneComponent>
+        </Grid_Styled>
     );
 };

@@ -5,6 +5,12 @@ const Cell_Styled = styled.div`
     display: flex;
 `;
 
-export const Cell = () => {
-    return <Cell_Styled>X</Cell_Styled>;
+type Props = {
+    text?: string;
+    empty?: boolean;
+    key?: string;
+};
+
+export const Cell: React.FC<Props> = ({ text = '', empty, key }) => {
+    return <Cell_Styled key={key}>{!empty && text}</Cell_Styled>;
 };

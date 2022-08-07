@@ -6,10 +6,8 @@ import { LayoutWrapper } from '../layouts/LayoutWrapper';
 
 export const MainLayout: React.FC = () => {
     return (
-        <>
-            <LayoutWrapper>
-                <Grid />
-            </LayoutWrapper>
-        </>
+        <LayoutWrapper>
+            <Grid size={10} />
+        </LayoutWrapper>
     );
 };

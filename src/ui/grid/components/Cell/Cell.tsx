@@ -8,9 +8,8 @@ const Cell_Styled = styled.div`
 type Props = {
     text?: string;
     empty?: boolean;
-    key?: string;
 };
 
-export const Cell: React.FC<Props> = ({ text = '', empty, key }) => {
-    return <Cell_Styled key={key}>{!empty && text}</Cell_Styled>;
+export const Cell: React.FC<Props> = ({ text = '', empty }) => {
+    return <Cell_Styled>{!empty && text}</Cell_Styled>;
 };

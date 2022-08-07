@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import times from 'lodash/times';
+import uniqueId from 'lodash/uniqueId';
 
 import { CloneComponent } from '@/business/utils/cloneComponent';
 
@@ -13,14 +14,13 @@ const Grid_Styled = styled.div<Props>`
     grid-template-columns: repeat(${(props) => ++props.size}, auto);
     row-gap: 10px;
     margin: auto;
-    width: 70%;
 `;
 
 type Props = {
     size: number;
 };
 
-const makeObj = (index: number) => ({ order: index, index: index });
+const makeObj = (index: number) => ({ order: index, key: uniqueId(`${index}-row`) });
 
 export const Grid: React.FC<Props> = ({ size = 10 }) => {
     return (

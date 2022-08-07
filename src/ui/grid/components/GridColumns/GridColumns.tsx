@@ -10,7 +10,7 @@ type Props = {
 
 export const GridColumns: React.FC<Props> = ({ length, annotations = NUMERIC }) => {
     return (
-        <>
+        <React.Fragment>
             <Cell empty />
             {annotations.map((letter, index) => {
                 if (index >= length) {
@@ -18,6 +18,6 @@ export const GridColumns: React.FC<Props> = ({ length, annotations = NUMERIC }) 
                 }
                 return <Cell key={letter} text={letter} />;
             })}
-        </>
+        </React.Fragment>
     );
 };

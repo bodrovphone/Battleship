@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const LayoutWrapper_Styled = styled.div`
     display: flex;
-    margin: 0 auto;
+    flex-direction: column;
     padding: 0;
     overflow: hidden;
     box-sizing: border-box;
@@ -11,10 +11,19 @@ const LayoutWrapper_Styled = styled.div`
     height: 100vh;
 `;
 
+const InnerContainer_Styled = styled.div`
+    width: 70%;
+    margin: auto;
+`;
+
 type Props = {
     children: React.ReactNode;
 };
 
 export const LayoutWrapper: React.FC<Props> = ({ children }) => {
-    return <LayoutWrapper_Styled>{children}</LayoutWrapper_Styled>;
+    return (
+        <LayoutWrapper_Styled>
+            <InnerContainer_Styled>{children}</InnerContainer_Styled>
+        </LayoutWrapper_Styled>
+    );
 };

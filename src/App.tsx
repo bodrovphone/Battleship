@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { MainLayout } from '@/ui/main/@core';
+import { Main } from '@/ui/main/@core';
 import { GlobalStyle } from '@/styles/global';
 
 const App: React.FC = () => {
     return (
-        <>
+        <React.Fragment>
             <GlobalStyle />
-            <MainLayout />
-        </>
+            <Main />
+        </React.Fragment>
     );
 };
 

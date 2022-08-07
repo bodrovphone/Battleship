@@ -1,6 +1,9 @@
 import React from 'react';
-import { Cell } from '../Cell';
+import uniqueId from 'lodash/uniqueId';
+
 import { iterate } from '@/business/utils/iterate';
+
+import { Cell } from '../Cell';
 
 type Props = {
     length: number;
@@ -10,19 +13,19 @@ type Props = {
 
 export const GridRow: React.FC<Props> = ({ length, order, sideAnnotations }) => {
     return (
-        <>
+        <React.Fragment key={uniqueId()}>
             {iterate(length).run((index) => {
                 if (index === 0 && sideAnnotations) {
                     return (
-                        <>
-                            <Cell key={sideAnnotations[order]} text={sideAnnotations[order]} />
-                            <div>X</div>
-                        </>
+                        <React.Fragment key={uniqueId()}>
+                            <Cell text={sideAnnotations[order]} />
+                            <div>•</div>
+                        </React.Fragment>
                     );
                 } else {
-                    return <div key={new Date().toDateString()}>X</div>;
+                    return <div key={uniqueId('cell')}>•</div>;
                 }
             })}
-        </>
+        </React.Fragment>
     );
 };
